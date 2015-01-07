@@ -62,6 +62,16 @@ foreach ($xml->channel->item as $tof)
 		echo $tof->title;
 		echo "</td>";
 		echo "</tr>";
+	echo "</td>";
+	echo "<td>";
+	echo "<form action='/devoirTHYP1415/ZamelMouhaned/absence/public/ecrire' method='get'>
+			<input type='submit' value='absent' name='id_abs'>
+			
+			
+			<input type='submit' value='present'>
+			</form>";
+	echo "</td>";
+		echo "</tr>";
 }
 echo '</ul>';	
 ?>
