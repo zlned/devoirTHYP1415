@@ -40,7 +40,43 @@
     filter: alpha(opacity=100); /* for older versions of IE */
 }
 
-</style>		
+</style>
+<Script>
+$(document).ready(function() {
+    //##### send add record Ajax request to response.php #########
+    $("#formsubmit").click(function (e) {
+            e.preventDefault();
+            
+            
+        
+            
+            var myData = 'Id_absence='+ $("#id_abs").val(); //build a post data structure
+            jQuery.ajax({
+            type: "POST", // HTTP method POST or GET
+            url: "/ecrire", //Where to make Ajax calls
+            dataType:"text", // Data type, HTML, json etc.
+            data:myData, //Form variables
+            success:function(response){
+                $("#responds").append(response);
+                $("#contentText").val(''); //empty text field on successful
+                $("#FormSubmit").show(); //show submit button
+                $("#LoadingImage").hide(); //hide loading image
+
+            },
+            error:function (xhr, ajaxOptions, thrownError){
+                $("#FormSubmit").show(); //show submit button
+                $("#LoadingImage").hide(); //hide loading image
+                alert(thrownError);
+            }
+            });
+    });
+
+    
+    
+    });
+
+});
+</script>
 <?php
 //echo '<link rel="stylesheet" href="galerie.css" type="text/css">';
 $xml = simplexml_load_file('http://picasaweb.google.com/data/feed/base/user/107401320610499259896/albumid/6065229773950541889?alt=rss&kind=photo&authkey=Gv1sRgCNak7e60l-7VlgE&hl=fr');
@@ -64,7 +100,7 @@ foreach ($xml->channel->item as $tof)
 		echo "</tr>";
 	echo "</td>";
 	echo "<td>";
-	echo "<form action='/devoirTHYP1415/ZamelMouhaned/absence/public/ecrire' method='get'>
+	echo "<form name='formsubmit'action='/devoirTHYP1415/ZamelMouhaned/absence/public/ecrire' method='get'>
 			<input type='submit' value='absent' name='id_abs'>
 			
 			

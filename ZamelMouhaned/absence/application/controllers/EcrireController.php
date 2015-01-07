@@ -12,7 +12,7 @@ class EcrireController extends Zend_Controller_Action
     {
         // action body
     }
-	 public function ajouterAction()
+	 public function ajouterabAction()
     {
         
         // On crée une instance du formulaire
@@ -37,7 +37,7 @@ class EcrireController extends Zend_Controller_Action
         }
         
     }
-	  public function ajouterAction()
+	  public function ajouterprAction()
     {
         
         // On crée une instance du formulaire
